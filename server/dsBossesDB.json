@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Iudex Gundyr",
+      "imageURL" : "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/iudex_gundry_trophy.PNG"
+    },
+    {
+      "id": 2,
+      "name": "Abyss Watchers",
+      "imageURL" : "AbyssWatch.png"
+    },
+    {
+      "id": 3,
+      "name": "High Lord Wolnir",
+      "imageURL" : "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/high_lord_wolnir_trophy.PNG"
+    },
+    {
+      "id": 4,
+      "name": "Yhorm the Giant",
+      "imageURL" : "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/lord_of_cinder_yhorm_the_giant.PNG"
+    },
+    {
+      "id": 5,
+      "name": "Soul of Cinder",
+      "imageURL" : "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/tumblr_o25lubbSXv1qzwtdlo1_1280.jpg"
+    }
+]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+  </head>
+  <body class="container">
+    <h2>Do YOU need a compliment or a fortune</h2>
+    <button id="complimentButton">Get a compliment</button>
+    <button id="fortune">Ask Zoltar</button>
+    <div id="fortunebox"></div>
+    <main>
+      <H2>Dark Souls 3 Bosses</H2>
+      <button id = "getboss">Get all Bosses</button>
+      <section id="bosscontainer">
+
+        <div id = 'bPic'>
+
+        </div>
+      </section>
+    </main>
+    <aside >
+      <form id="addbossform">
+        <input type='text' id="addbossname" placeholder="Boss name"/>
+        <input type='text'id="addbossImg"placeholder='Paste an image URL'/>
+        <button id = "addboss">Add a Boss</button>
+      </form>
+    </aside>
+    <aside id="editbossform">
+      <form>
+        <input type='text' id="bossid" placeholder="Boss Id"/>
+        <input type='text' id="bossname" placeholder="Boss name"/>
+        <input type='text'id="bossImg"placeholder='Paste an image URL'/>
+        <button id = "editboss">Edit a Boss</button>
+      </form>
+    </aside>
+    <aside id="delbossform">
+      <form>
+        <input type='text' id="bossdDelInp" placeholder="Boss Id"/>
+        <button id = "deleteboss">Delete boss</button>
+      </form>
+    </aside>
+    <div>
+      
+    </div>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    
+  </body>
+</html>
