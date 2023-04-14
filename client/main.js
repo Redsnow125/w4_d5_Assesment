@@ -1,3 +1,5 @@
+// const { response } = require("express")
+
 const complimentBtn = document.getElementById("complimentButton")
 const fortuneBtn = document.querySelector('#fortune')
 let fortBox = document.querySelector('#fortunebox')
@@ -10,6 +12,9 @@ const bDelBtn = document.querySelector('#deleteboss')
 const bContainer = document.querySelector('#bosscontainer')
 const bPic = document.querySelector('#bPic')
 const bAddform = document.querySelector('#addbossform')
+const addbossname = document.querySelector('#addbossname')
+const addbossimg = document.querySelector('#addbossImg')
+const delBossInp = document.querySelector('#bossDelInp')
 //=======================
 
 
@@ -39,18 +44,28 @@ const tellFortune = () =>{
 fortuneBtn.addEventListener('click', tellFortune)
 //Get==============================
 const getBosses = () =>{
+
+    bContainer.innerHTML ="";
     axios.get("http://localhost:4000/api/bosses")
          .then(res =>{
-            const bossList = res.data;
+            var bossList = res.data;
             for(i = 0; i < bossList.length; i++){
+                const deleteBtn = document.createElement('button')
+                deleteBtn.textContent = 'X'
+                deleteBtn.id = bossList[i].id
+                console.log(deleteBtn.id)
                 let tempBoss = {
                     id : bossList[i].id,
                     name : bossList[i].name,
                     img : bossList[i].imageURL
                 }
+                deleteBtn.addEventListener('click', deleteboss)
                 bContainer.innerHTML += `
                 <h3>boss name: ${tempBoss.name} </h3>
                 <h4><p>Boss id: ${tempBoss.id}<p></h4>`;
+                bContainer.appendChild(deleteBtn)
+
+
             }
          })
          .catch(err => console.log(err))
@@ -67,37 +82,45 @@ const editBoss = () =>{
 }
 
 //Post=============================
-let addbossSubmit = body =>{
-    axios.post("http://localhost:4000/api/bosses",body)
-}
-
-
 const addboss = evt =>{
-            evt.preventDefault()
-            let bossname = document.querySelector('#addbossname')
-            let bossimg = document.querySelector('#addbossImg')
+    evt.preventDefault()
 
-            let bossBodyObj ={
-                name : bossname,
-                imageURL : bAddform.bossimg
+
+            let body ={
+                name : addbossname.value,
+                imageURL : addbossimg.value
             }
-            addbossSubmit(bossBodyObj)
+
+            console.log(body.name)
+            axios.post("http://localhost:4000/api/bosses",body)
+            .then((res) =>{
+                console.log(res.data)
+                getBosses()
+            })
          
+            .catch(err => console.log(err))
+            addbossname.value =''
+            addbossimg.value =''
 
 }
 //Delete===========================
-const deleteboss = () =>{
-    axios.delete("http://localhost:4000/api/bosses")
-         .then(res =>{
+const deleteboss = evt =>{
+    console.log(evt.target)
+        axios.delete(`http://localhost:4000/api/bosses/:${evt.target.id}`)
+        .then(res =>{
             console.log(res.data)
-         })
-         .catch(err => console.log(err))
+            getBosses()
+        })
+        .catch(err => console.log(err))
+
+
+
 }
 
 
 bGetBtn.addEventListener('click', getBosses)
 bEditBtn.addEventListener('click', editBoss)
-bAddBtn.addEventListener('submit', addboss)
-bDelBtn.addEventListener('click', deleteboss)
+bAddBtn.addEventListener('click', addboss)
+// deleteBtn.addEventListener('click', deleteboss)
 
 getBosses()

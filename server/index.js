@@ -24,7 +24,7 @@ const {deleteboss} = controller
 app.get('/api/bosses', getboss)
 app.put('/api/bosses', editboss)
 app.post('/api/bosses', addboss)
-app.delete('/api/bosses', deleteboss)
+app.delete('/api/bosses/:id', deleteboss)
 
 
 

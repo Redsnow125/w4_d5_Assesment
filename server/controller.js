@@ -1,5 +1,6 @@
 let fortuneDb = require('./fortune.json')
 let DsBossdatabase = require('./dsBossesDB.json')
+let bossIndex = 6
 module.exports = {
    
     getCompliment: (req, res) => {
@@ -27,10 +28,19 @@ module.exports = {
 
     },
     addboss: (req,res) =>{
-        DsBossdatabase.push(req.data)
+        let body = req.body;
+
+        body.id = bossIndex;
+        DsBossdatabase.push(body)
+        res.status(200).send(DsBossdatabase)
+        bossIndex++;
     },
     deleteboss: (req,res) =>{
-
-    },
+        let id = req.query
+        console.log(id)
+        console.log(req.body,req.params)
+        DsBossdatabase.splice(+id,1)
+        res.status(200).send(DsBossdatabase)
+        },
 
 }
